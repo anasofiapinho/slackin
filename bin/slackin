@@ -6,7 +6,7 @@ var slackin = require('../node');
 
 program
 .version(pkg.version)
-.usage('[options] <slack-subdomain> <api-token>')
+.usage('[options] <slack-subdomain> <api-token> <mailchimp-datacenter> <mailchimp-api-key> <mailchimp-list-id>')
 .option('-p, --port <port>', 'Port to listen on [$PORT or 3000]', require('hostenv').PORT || 3000)
 .option('-h, --hostname <hostname>', 'Hostname to listen on [$HOSTNAME or 0.0.0.0]', require('hostenv').HOSTNAME || '0.0.0.0')
 .option('-c, --channels [<chan>]', 'One or more comma-separated channel names to allow single-channel guests [$SLACK_CHANNELS]', process.env.SLACK_CHANNELS)
@@ -16,11 +16,14 @@ program
 .option('-c, --css <file>', 'Full URL to a custom CSS file to use on the main page')
 .parse(process.argv);
 
-if (program.args.length != 2) {
+if (program.args.length != 5) {
   program.help();
 } else {
   program.org = program.args[0];
   program.token = program.args[1];
+  program.mailchimp_datacenter = program.args[2];
+  program.mailchimp_api_key = program.args[3];
+  program.mailchimp_list_id = program.args[4];
 }
 
 // support deprecated option

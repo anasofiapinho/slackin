@@ -19,29 +19,23 @@ Read more about the [motivations and history](http://rauchg.com/slackin) behind 
 
 ### Server
 
-#### Heroku
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/rauchg/slackin/tree/0.6.0)
-
-#### OpenShift
-
-[Follow these instructions.](https://github.com/rauchg/slackin/wiki/OpenShift)
-
 #### Custom
 
 Install it and launch it on your server:
 
 ```bash
 $ npm install -g slackin
-$ slackin "your-slack-subdomain" "your-slack-token"
+$ slackin "your-slack-subdomain" "your-slack-token" "your-mailchimp-datacenter" "your-mailchimp-api-key" "your-mailchimp-list-id"
 ```
 
 You can find your API token at [api.slack.com/web](https://api.slack.com/web) – note that the user you use to generate the token must be an admin. You need to create a dedicated `@slackin-inviter` user (or similar), mark that user an admin, and use a token from that dedicated admin user.
 
+You can find your Mailchimp API key at [https://DC.YOURMAILCHIMPADMINACCOUNT.com/account/api/](https://DC.YOURMAILCHIMPADMINACCOUNT.com/account/api/). The datacenter is the value of DC in that same url.
+
 The available options are:
 
 ```
-Usage: slackin [options] <slack-subdomain> <api-token>
+Usage: slackin [options] <slack-subdomain> <api-token> <mailchimp-datacenter> <mailchimp-api-key> <mailchimp-list-id>
 
 Options:
 
@@ -106,6 +100,9 @@ require('slackin')({
   token: 'yourtoken', // required
   interval: 1000,
   org: 'your-slack-subdomain', // required
+  mailchimp_datacenter: 'your-mailchimp-datacenter', // required
+  mailchimp_api_key: 'your-mailchimp-api-key', // required
+  mailchimp_list_id: 'your-mailchimp-list-id', // required
   channels: 'channel,channel,...' // for single channel mode
   silent: false // suppresses warnings
 }).listen(3000);
@@ -118,8 +115,8 @@ By default logging is enabled.
 
 ## Developing
 
-Slackin's server side code is written in ES6. It uses babel to transpile the 
-ES6 code to a format node understands. After cloning Slackin, you should 
+Slackin's server side code is written in ES6. It uses babel to transpile the
+ES6 code to a format node understands. After cloning Slackin, you should
 install the prerequisite node libraries with npm:
 
 ```bash
@@ -127,7 +124,7 @@ $ npm install
 ```
 
 After the libraries install, the postinstall script will run make to invoke
-babel on the source. It is important to run make manually after updating any 
+babel on the source. It is important to run make manually after updating any
 files in lib/ to update the versions in node/.
 
 ## Credits
