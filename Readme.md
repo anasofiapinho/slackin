@@ -1,8 +1,7 @@
 
 # slackin
 
-A little server that enables public access
-to a Slack server. Like Freenode, but on Slack.
+A little server that enables public access to a Slack server.
 
 It provides
 
@@ -12,6 +11,7 @@ It provides
   that shows connected users in *realtime* with socket.io.
 - A SVG badge that works well from static mediums
   (like GitHub README pages)
+- Checks if users are already a part of a Mailchimp email list.
 
 Read more about the [motivations and history](http://rauchg.com/slackin) behind Slackin.
 
