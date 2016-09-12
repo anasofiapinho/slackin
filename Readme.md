@@ -19,6 +19,10 @@ Read more about the [motivations and history](http://rauchg.com/slackin) behind 
 
 ### Server
 
+#### Heroku
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/anasofiapinho/slackin/tree/master)
+
 #### Custom
 
 Install it and launch it on your server:
